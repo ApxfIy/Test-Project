@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27488118572cf934c8cd9864ebe8cbea, type: 3}
+  m_Name: Numbers
+  m_EditorClassIdentifier: 
+  Targets:
+  - <Icon>k__BackingField: {fileID: 1422184923334757970, guid: 3ebbfd4230f418a4ba284509a4ace19a,
+      type: 3}
+    <Name>k__BackingField: 1
+  - <Icon>k__BackingField: {fileID: 1808195818850983521, guid: 3ebbfd4230f418a4ba284509a4ace19a,
+      type: 3}
+    <Name>k__BackingField: 2
+  - <Icon>k__BackingField: {fileID: -7900951133411543555, guid: 3ebbfd4230f418a4ba284509a4ace19a,
+      type: 3}
+    <Name>k__BackingField: 3
+  - <Icon>k__BackingField: {fileID: 2267071060405275165, guid: 3ebbfd4230f418a4ba284509a4ace19a,
+      type: 3}
+    <Name>k__BackingField: 4
+  - <Icon>k__BackingField: {fileID: -7398325283844340781, guid: 3ebbfd4230f418a4ba284509a4ace19a,
+      type: 3}
+    <Name>k__BackingField: 5
+  - <Icon>k__BackingField: {fileID: -7015292045520539579, guid: 3ebbfd4230f418a4ba284509a4ace19a,
+      type: 3}
+    <Name>k__BackingField: 6
+  - <Icon>k__BackingField: {fileID: -675344402919758444, guid: 3ebbfd4230f418a4ba284509a4ace19a,
+      type: 3}
+    <Name>k__BackingField: 7
+  - <Icon>k__BackingField: {fileID: 3547489320769246608, guid: 3ebbfd4230f418a4ba284509a4ace19a,
+      type: 3}
+    <Name>k__BackingField: 8
+  - <Icon>k__BackingField: {fileID: 4113829005332862926, guid: cbe4bf9abd02f634396f0069a53349aa,
+      type: 3}
+    <Name>k__BackingField: 9
+  - <Icon>k__BackingField: {fileID: -5099292496197868168, guid: a32f17ce52332b74fbbab6230e79cac5,
+      type: 3}
+    <Name>k__BackingField: 10
