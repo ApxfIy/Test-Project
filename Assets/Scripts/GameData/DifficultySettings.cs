@@ -45,7 +45,5 @@ namespace Assets.Scripts.GameData
         {
             CurrentLevel = 0;
         }
-
-
     }
 }
