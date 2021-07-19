@@ -23,17 +23,14 @@ namespace Assets.Scripts
 
         private GameTarget _answer;
         private IResettable[] _resettables;
-        private List<GameTarget> _currentShuffledTargets;
+        private GameTarget[] _currentShuffledTargets;
         private List<GameTarget> _currentOriginalTargets;
         private List<List<GameTarget>> _targets;
 
         private void Awake()
         {
-            _resettables = FindObjectsOfType<MonoBehaviour>().OfType<IResettable>().ToArray();
-            _gameGrid.OnCellClick += GameGridOnCellClick;
-            _gameUi.OnRestart.AddListener(RestartGame);
-
-            CreateItemsList();
+            Initialize();
+            RefreshItemsList();
             ResetAllComponents();
             SetUpLevel();
         }
@@ -43,6 +40,18 @@ namespace Assets.Scripts
             _gameUi.OnRestart.RemoveListener(RestartGame);
             _gameGrid.OnCellClick -= GameGridOnCellClick;
             StopAllCoroutines();
+        }
+
+        private void Initialize()
+        {
+            _resettables = FindObjectsOfType<MonoBehaviour>().OfType<IResettable>().ToArray();
+            _targets = new List<List<GameTarget>>(_gameTargets.Length);
+            for (var i = 0; i < _targets.Capacity; i++)
+            {
+                _targets.Add(new List<GameTarget>());
+            }
+            _gameGrid.OnCellClick += GameGridOnCellClick;
+            _gameUi.OnRestart.AddListener(RestartGame);
         }
 
         private void RestartGame()
@@ -90,9 +99,9 @@ namespace Assets.Scripts
             if (difficulty > _currentOriginalTargets.Count)
                 Debug.LogWarning($"Targets doesn't contain enough elements for this difficulty ({_currentOriginalTargets.Count} < {difficulty})");
 
-            _currentShuffledTargets = _currentOriginalTargets.Shuffle().Take(difficulty).ToList();
+            _currentShuffledTargets = _currentOriginalTargets.Shuffle().Take(difficulty).ToArray();
 
-            _answer = _currentShuffledTargets[Random.Range(0, _currentShuffledTargets.Count)];
+            _answer = _currentShuffledTargets[Random.Range(0, _currentShuffledTargets.Length)];
             _gameGrid.SetData(_currentShuffledTargets);
             _gameUi.SetTargetName(_answer.Name);
         }
@@ -105,20 +114,19 @@ namespace Assets.Scripts
             if (_targets.Count == 0)
             {
                 Debug.LogWarning("All targets was already found at least once. Resetting targets state");
-                CreateItemsList();
+                RefreshItemsList();
             }
 
             return _targets[Random.Range(0, _targets.Count)];
         }
 
-        private void CreateItemsList()
+        private void RefreshItemsList()
         {
-            _targets = new List<List<GameTarget>>(_gameTargets.Length);
+            _targets.ForEach(t=>t.Clear());
 
             for (var i = 0; i < _targets.Capacity; i++)
             {
-                var entry = new List<GameTarget>(_gameTargets[i].Targets);
-                _targets.Add(entry);
+                _targets[i].AddRange(_gameTargets[i].Targets);
             }
         }
 
