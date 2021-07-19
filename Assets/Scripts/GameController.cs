@@ -56,10 +56,10 @@ namespace Assets.Scripts
 
         private void RestartGame()
         {
-            StartCoroutine(Restart());
+            StartCoroutine(RestartGameRoutine());
         }
 
-        private IEnumerator Restart()
+        private IEnumerator RestartGameRoutine()
         {
             _gameUi.ShowLoading();
             _gameUi.ShowEndPanel(false);
